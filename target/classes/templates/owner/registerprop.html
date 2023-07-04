@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script th:src="@{/js/script.js}"></script>
+
+<title>Hello, world!</title>
+</head>
+<body class="bodybg registerbg">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand mx-auto" href="/">Residence Management
+			System</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+	</nav>
+
+	<!-- navbar -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm my-auto" >
+				<img
+					th:src="@{'/images/'+${owner.imgURL}}"
+					 class="img-fluid rounded border border-dark">
+
+			</div>
+			<div
+				style="width: 80%; height: 65vh; margin: 10vh auto; text-align: center; color: white;">
+				<h2>Register property for <span th:text="${owner.first}"></span></h2>
+				<h6>Please Enter Property Details</h6>
+				
+				<form class="form-group"
+					style="width: 60%; margin: auto; padding:10px; text-align: center; background-color:orange;" th:action="@{/owner/registerproperty}" method="post"  enctype="multipart/form-data">
+					<input type="hidden" name="ownerid" th:value="${owner.id}">			<!-- //to pass owner id to propertycontroller -->
+					<input type="number" name="rentAmt" class="form-control" placeholder="rentAmount"  min="500" max="20000" style="margin-top: 20px;" required>
+					<input type="text" name="location" class="form-control" placeholder="Location" style="margin-top: 20px;"  required>
+					<input type="number" name="leaseDuration" class="form-control" placeholder="Lease Duration (in months)"  min="1" max="11" style="margin-top: 20px;" required>
+					<div style="padding-top:1vh;">
+						<h4 style="display:inline;"> Select your Property Type:</h4>
+		  					<label for="flat-id">
+								 <input type="radio" id="flat-id" name="propertyType" value="Flat">
+								  Flat
+							</label>
+		  					<label for="pg-id"> 
+								<input type="radio" id="pg-id" name="propertyType" value="PG">
+								 PG
+							</label><br>
+					</div>
+					<label for="prop-profimg" style="margin-left:-30px;">Select an image:</label>
+					<input type="file" name="profileImg" id="prop-profimg" accept="image/png, image/gif, image/jpeg" style="margin-top: 5px;" required>
+					
+					<button type="submit" class="btn btn-success"
+						style="margin-top: 20px;">Register</button>
+
+					<h6 style="margin-top: 20px;">
+						Already a User?<a href="/tenant/login"
+							style="margin-left: 2px; color:black;"> Login!</a>
+					</h6>
+				</form>
+			</div>
+
+
+			<!--card-->
+		</div>
+	</div>
+	
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+		
+</body>
+</html>

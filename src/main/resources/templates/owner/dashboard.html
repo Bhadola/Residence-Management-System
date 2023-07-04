@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script th:src="@{/js/script.js}"></script>
+
+<title>Hello, world!</title>
+</head>
+<body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand mx-auto" href="/">Residence Management
+			System (Logout)</a>
+
+	</nav>
+
+	<!-- navbar -->
+
+
+	<div style="display: flex; margin: auto;">
+		<div style="background-color: yellow; height: 92vh; width: 30%;">
+			<div name="blackline"
+				style="width: 100%; height: 5px; background-color: black; margin-top: 5vh;"></div>
+			<div
+				style="margin: auto; text-align: center; color: black; background-color: orange;">
+				<h1 style="padding-top: 1vh;">Owner</h1>
+				<!-- <img class="useravatar" src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> -->
+				<img class="useravatar" th:src="@{'/images/'+${ownerdash.imgURL}}">
+				<div name="username">
+					<h2 style="display: inline;" th:text="${ownerdash.first}"></h2>
+					<h2 th:text="${ownerdash.last}"></h2>
+				</div>
+				<span> Contact Details : </span><span th:text="${ownerdash.phone}"></span>
+
+
+				<div th:if="${ownerdash.alertMsg}">
+					<div name="blackline"
+						style="width: 100%; height: 5px; background-color: black; margin-top: 20px;"></div>
+					<h4>Message received from Admin</h4>
+					<div class="alert alert-danger mt-2">
+						<span th:text="${ownerdash.alertMsg}"></span>
+					</div>
+				</div>
+				<div name="blackline"
+					style="width: 100%; height: 5px; background-color: black; margin-top: 20px;"></div>
+			</div>
+			<div style="text-align: center; padding-top: 1vh;">
+				<a th:href="@{/owner/registerprop/{id}(id=${ownerdash.id})}"
+					class="btn btn-info">Register Property</a>
+			</div>
+		</div>
+
+		<div style="height: 92vh;">
+
+			<div style="text-align: center;">
+				<h2>
+					Hi ,<span th:text="${ownerdash.first}"></span>
+				</h2>
+				<p>Your Properties are listed Below</p>
+			</div>
+			<div class="container ">
+				<table class="table table-striped" border="1">
+					<thead class="bg-primary ">
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">PropertyImg</th>
+							<th scope="col">Type</th>
+							<th scope="col">Rent</th>
+							<th scope="col">Location</th>
+							<th scope="col">Tenant Name</th>
+							<th scope="col">lease duration(Months)</th>
+							<th scope="col">Actions</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="e : ${properties}" class="text-primary">
+							<td th:text="${e.id}"></td>
+							<td><img class="propdashavatar"
+								th:src="@{'/images/'+${e.imgURL}}"></td>
+							<td th:text="${e.propertyType}"></td>
+							<td th:text="${e.rentAmt}"></td>
+							<td th:text="${e.location}"></td>
+							<td>
+								<div th:if="${e.owned==1}" th:text="${e.tenantinprop.first}"></div>
+								<div th:if="${e.owned!=1}">None</div>
+							</td>
+							<td th:text="${e.leaseDuration}"></td>
+
+
+							<td><a class="btn btn-sm btn-primary"
+								th:href="@{/edit_tenant/{id}(id=${e.id})}">Edit</a> <a
+								class="btn btn-sm btn-danger"
+								th:href="@{/owner/delete_prop/{id}(id=${e.id})}">Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

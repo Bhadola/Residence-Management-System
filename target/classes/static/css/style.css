@@ -1,0 +1,58 @@
+html,body{
+	height:100%;
+	margin:0px;
+}
+.banner{
+	width:100%;
+	height:92vh;
+	background:linear-gradient(rgba(255, 255, 255,0.4),rgba(0,0,0,0.8)) ,url("../images/bluebg.jpg");
+	background-size:cover;
+	color:white;
+}
+
+#propcontent{
+	padding-top:10px;
+	background: linear-gradient(360deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+}
+.owner{
+	background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)) ,url("../images/bluebg.jpg");
+}
+.tenant{
+	background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)) ,url("../images/bluebg.jpg");
+}
+.admin{
+	background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)) ,url("../images/registerbg.jpg");
+}
+.registerbg{
+	background: radial-gradient(circle at 10% 20%, rgb(3, 235, 255) 0%, rgb(152, 70, 242) 100.2%);
+}
+.bodybg{
+	width:100%;
+	height:100vh;
+	background-size:cover;
+	background-repeat:no-repeat;
+	color:white;
+}
+.useravatar{
+	border-radius:50%;
+	height:150px;
+	width:150px;
+	  object-fit: cover;
+}
+.userdashavatar{
+	border-radius:50%;
+	height:75px;
+	width:75px;
+	  object-fit: cover;
+}
+.propdashavatar{
+	border-radius:50%;
+	height:100px;
+	width:100px;
+	  object-fit: cover;
+}
+.card-img-top{
+	height:200px;
+	width:200px;
+	background-size:cover;
+}

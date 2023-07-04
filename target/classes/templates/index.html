@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<script th:src="@{/js/script.js}"></script>
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<title>Hello, world!</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+		<a class="navbar-brand" href="#">Residence Management System</a>
+		
+		<div class="ml-auto" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="login_all">Login <span class="sr-only">(current)</span>
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<section
+		class="banner d-flex justify-content-center align-items-center">
+		<div class="text-center">
+			<h1 class="font-weight-bold">TMS</h1>
+			<p>Your all in one stop to Rent/Buy Properties</p>
+			<button onclick="scrollToContent()" class="btn btn-info">Browse
+				Properties</button>
+		</div>
+	</section>
+	<section
+		class="banner d-flex justify-content-center" id="propcontent">
+		<div class="text-center" style="width:80%;">
+			<h1 class="font-weight-bold">Listed Properties</h1>
+			<p>Owner Contacts will be visible once you login</p>
+			
+			<table class="table table-striped" border="1" style="background-color:white;">
+			<thead class="bg-primary ">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">PropertyImg</th>
+					<th scope="col">Type</th>
+					<th scope="col">Rent</th>
+					<th scope="col">Location</th>
+					<th scope="col">Currently Owned</th>
+					<th scope="col">lease duration(Months)</th>
+					<th scope="col">Actions</th>
+				
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e : ${properties}" class="text-primary">
+					<td th:text="${e.id}"></td>
+					<td><img class="propdashavatar" th:src="@{'/images/'+${e.imgURL}}"></td>
+					<td th:text="${e.propertyType}"></td>
+					<td th:text="${e.rentAmt}"></td>
+					<td th:text="${e.location}"></td>
+					<td >
+						<div th:if="${e.owned==1}">Yes</div>
+						<div th:if="${e.owned!=1}">No</div>
+					</td>
+					<td th:text="${e.leaseDuration}"></td>
+					
+				
+					<td><a class="btn btn-sm btn-primary"
+						href="/tenant/login">Buy</a> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+			
+		</div>
+	</section>
+	
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+</html>
